@@ -1,0 +1,360 @@
+/* ========================================
+   BASE COLORS & GLOBAL
+======================================== */
+:root{
+  --ink:#0f172a;
+  --muted:#64748b;
+  --bg:#f8fafc;
+  --white:#ffffff;
+  --nav:#233758;
+  --accent:#1e2e49;
+  --line:#e2e8f0;
+  --ok:#10b981;
+  --warn:#f59e0b;
+  --bad:#ef4444;
+
+  --input-border:#d1d5db;
+  --input-focus:#2563EB;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at -10% -10%, rgba(30,46,73,.08), transparent 60%),
+    radial-gradient(1000px 600px at 110% -20%, rgba(35,55,88,.06), transparent 60%),
+    var(--bg);
+  color:var(--ink);
+}
+
+/* ========================================
+   NAVBAR
+======================================== */
+.nav{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; background:var(--nav); color:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.brand{font-weight:800; letter-spacing:.3px}
+.nav a{
+  color:#fff; text-decoration:none; font-weight:600;
+  margin:0 10px; opacity:.95;
+}
+.nav a:hover{opacity:1}
+.nav .menu{display:flex; gap:12px}
+.nav .burger{display:none; cursor:pointer}
+
+/* ========================================
+   LAYOUT & UTILITIES
+======================================== */
+.container{max-width:1100px; margin:0 auto; padding:20px}
+
+/* grid utama */
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+.row{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+
+/* kolom (dipakai di dashboard, dsb) */
+.col-4{grid-column:span 4}
+.col-6{grid-column:span 6}
+.col-8{grid-column:span 8}
+.col-12{grid-column:span 12}
+
+/* spacing kecil */
+.mt-1{margin-top:8px}
+.mt-2{margin-top:14px}
+.mt-3{margin-top:22px}
+.small{font-size:13px; color:var(--muted)}
+hr{border:none; height:1px; background:var(--line); margin:16px 0}
+
+/* CARD */
+.card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 8px 24px rgba(15,23,42,.08);
+}
+.card h2,.card h3{margin:6px 0 18px}
+
+/* ========================================
+   HERO / TOP SECTION
+======================================== */
+.hero{
+  margin:10px 0 18px;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:linear-gradient(180deg, rgba(35,55,88,.08), rgba(35,55,88,0));
+}
+.hero-title{font-weight:800; font-size:22px}
+.hero-sub{color:var(--muted); margin-top:6px}
+
+/* ========================================
+   BUTTONS
+======================================== */
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  border:0; border-radius:12px;
+  padding:10px 16px;
+  font-weight:700; cursor:pointer;
+  background:var(--accent); color:#fff;
+  transition:.15s ease;
+  box-shadow:0 8px 20px rgba(30,46,73,.30);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent; color:var(--accent); border:1px solid var(--accent)}
+.btn.ok{background:var(--ok)}
+.btn.warn{background:var(--warn)}
+.btn.bad{background:var(--bad)}
+.btn.light{background:#fff; color:var(--accent); border:1px solid var(--line)}
+.actions-row{display:flex; flex-wrap:wrap; gap:10px}
+
+/* ========================================
+   TABLE
+======================================== */
+.table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--white);
+}
+.table th,.table td{
+  padding:12px 14px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+}
+.table th{
+  background:#f1f5f9;
+  font-weight:700;
+  font-size:14px;
+  color:#0f172a;
+}
+.table tr:last-child td{border-bottom:0}
+.table .actions{display:flex; gap:8px}
+
+/* ========================================
+   BADGE
+======================================== */
+.badge{
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:12px;
+  display:inline-block;
+}
+.badge.ok{background:rgba(16,185,129,.14); color:var(--ok)}
+.badge.bad{background:rgba(239,68,68,.14); color:var(--bad)}
+.badge.warn{background:rgba(245,158,11,.14); color:var(--warn)}
+.badge.info{background:rgba(30,46,73,.14); color:var(--accent)}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+.empty{
+  border:1px dashed var(--line);
+  border-radius:14px;
+  padding:16px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* ========================================
+   FORMS (GLOBAL DI DALAM CARD)
+======================================== */
+.card form{
+  max-width:650px;
+  margin:18px auto 0;   /* form selalu di tengah card */
+}
+
+/* grup per-field */
+.form-group{
+  margin-bottom:16px;
+}
+
+/* label */
+.form-group label{
+  display:block;
+  font-weight:600;
+  margin-bottom:6px;
+  font-size:0.95rem;
+}
+
+/* input / select / textarea */
+.card form input,
+.card form select,
+.card form textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--input-border);
+  background:#fff;
+  font-size:0.95rem;
+  transition:border-color .15s, box-shadow .15s;
+  outline:none;
+}
+
+.card form input:focus,
+.card form select:focus,
+.card form textarea:focus{
+  border-color:var(--input-focus);
+  box-shadow:0 0 0 2px rgba(37,99,235,.2);
+}
+
+/* textarea */
+.card form textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+/* row dua kolom (kalau butuh) */
+.form-row{
+  display:flex;
+  gap:16px;
+}
+.form-row .form-group{
+  flex:1;
+  margin-bottom:16px;
+}
+
+/* tombol di form */
+.card form .btn{margin-top:6px}
+
+/* ========================================
+   FOOTER
+======================================== */
+.footer{
+  margin-top:28px;
+  background:linear-gradient(180deg, var(--accent), #142038);
+  color:#fff;
+}
+.footer-inner{
+  max-width:1100px; margin:0 auto; padding:18px 20px;
+  display:grid; grid-template-columns:repeat(12,1fr); gap:16px;
+}
+.f-col{grid-column:span 4}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width:860px){
+  .grid,.row{
+    grid-template-columns:repeat(6,1fr);
+  }
+
+  /* di tablet: tiap kolom isi 1 baris penuh */
+  .col-4,
+  .col-6,
+  .col-8,
+  .col-12,
+  .f-col{
+    grid-column:span 6;
+  }
+
+  .nav .menu{display:none}
+  .nav .burger{display:block}
+}
+
+@media (max-width:520px){
+  .grid,.row{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  /* di HP: full width */
+  .col-4,
+  .col-6,
+  .col-8,
+  .col-12,
+  .f-col{
+    grid-column:span 4;
+  }
+}
+/* ===============================
+   LAYOUT DENGAN SIDEBAR (ADMIN)
+   =============================== */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar kiri */
+.sidebar {
+  width: 230px;
+  background: var(--nav);
+  color: #fff;
+  padding: 20px 16px;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  box-shadow: 8px 0 24px rgba(15,23,42,.25);
+}
+
+.sidebar-brand {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-menu a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #e5e7eb;
+  font-weight: 600;
+  font-size: .92rem;
+  transition: background .15s ease, color .15s ease, transform .05s ease;
+}
+
+.sidebar-menu a:hover {
+  background: rgba(15,23,42,.9);
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.sidebar-menu a.active {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* Area utama konten */
+.main {
+  flex: 1;
+  padding: 20px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Sembunyikan top nav di halaman yang pakai layout sidebar (kalau masih kebetulan kepakai) */
+.has-sidebar .nav {
+  display: none;
+}
+
+/* Responsive: sidebar jadi top bar sederhana */
+@media (max-width: 860px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 16px rgba(15,23,42,.25);
+    margin-bottom: 10px;
+  }
+  .main {
+    padding: 16px;
+  }
+}
